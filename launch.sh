@@ -14,6 +14,6 @@
 	rm -rf ~/Library/Containers/com.docker.docker
 	ln -s $GOINFRE/Containers/com.docker.docker ~/Library/Containers/com.docker.docker
 
-	#launch Docker Quickstart Terminal
-	cd /Applications
-	open Docker/Docker\ Quickstart\ Terminal.app
+	# launch Docker Quickstart Terminal
+	# cd /Applications
+	# open Docker/Docker\ Quickstart\ Terminal.app
