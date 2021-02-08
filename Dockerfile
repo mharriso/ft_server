@@ -23,13 +23,14 @@ RUN		tar -xf wordpress.tar.gz &&\
 RUN		openssl req -x509 -nodes -days 365 -subj "/C=RU/ST=/L=/O=/OU=42moscow/CN=mharriso" \
 		-newkey rsa:2048 -keyout /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.crt
 
-COPY	srcs/start.sh .
+COPY	srcs/*.sh .
 COPY	srcs/default /etc/nginx/sites-available
+COPY	srcs/autoindex_off /etc/nginx/sites-available
 COPY	srcs/config.inc.php /var/www/html/phpmyadmin
 COPY	srcs/wp-config.php /var/www/html/wordpress
 RUN		chmod 660 /var/www/html/wordpress/wp-config.php
 
 # Giving nginx's user-group rights over page files
-RUN	chown -R www-data:www-data /var/www/html/*
+RUN		chown -R www-data:www-data /var/www/html/*
 
 CMD		bash start.sh
